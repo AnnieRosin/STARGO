@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STARGO 线下追星一站式小助手 · 韩娱追星必备</title>
+<meta name="description" content="抢票提醒 / 观演出行 / 花销计算+收纳台账 / 跨国追星 / 现场工具箱 / 追星备忘录 / 粉丝互助社区 —— 合规、安全、高效的追星工具箱">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#11088;</text></svg>">
+</head>
+<body>
+
+<!-- ======== 顶部导航 ======== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo" onclick="switchTab('home')">
+      <span class="logo-icon">⭐</span>
+      <span class="logo-text">STARGO<small>线下追星一站式小助手</small></span>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">首页</button>
+      <button class="nav-btn" data-tab="ticket" onclick="switchTab('ticket')">🎫 抢票提醒</button>
+      <button class="nav-btn" data-tab="trip" onclick="switchTab('trip')">🗺️ 观演出行</button>
+      <button class="nav-btn" data-tab="budget" onclick="switchTab('budget')">💰 花销·台账</button>
+      <button class="nav-btn" data-tab="culture" onclick="switchTab('culture')">✈️ 跨国追星</button>
+      <button class="nav-btn" data-tab="tools" onclick="switchTab('tools')">🎪 现场工具箱</button>
+      <button class="nav-btn" data-tab="memo" onclick="switchTab('memo')">📝 备忘录</button>
+      <button class="nav-btn" data-tab="discover" onclick="switchTab('discover')">🔎 资讯站</button>
+      <button class="nav-btn" data-tab="community" onclick="switchTab('community')">💬 互助社区</button>
+      <button class="nav-btn" data-tab="style" onclick="switchTab('style')">💄 穿搭妆容</button>
+      <button class="nav-btn" data-tab="mine" onclick="switchTab('mine')">👤 我的</button>
+      <span class="nav-sep"></span>
+      <span id="auth-area"><button class="nav-btn nav-mini" onclick="openAuth('login')">👤 登录/注册</button></span>
+      <button class="nav-btn nav-mini" onclick="openReward()" title="打赏创作者">💝 打赏</button>
+      <button class="nav-btn nav-mini" onclick="openFeedback()" title="留言反馈">📮 反馈</button>
+      <button class="nav-btn nav-mini" onclick="openSettings()" title="网页设置（仅本机生效）">⚙️</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ======== 首页 ======== -->
+<main id="tab-home" class="tab-page active">
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>线下追星，<span class="grad-text">一个助手就够了</span></h1>
+      <p class="hero-sub">真实开票提醒 · 出行规划 · 花销台账 · 跨国攻略 · 现场工具箱 · 云备忘录 · 粉丝互助<br>不代抢、不倒票，只做最合规贴心的追星辅助工具 💜</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="switchTab('ticket')">查看近期真实开票 →</button>
+        <button class="btn btn-ghost" onclick="switchTab('tools')">打开现场工具箱 🎪</button>
+      </div>
+      <div class="hero-badges">
+        <span class="badge-safe">✅ 拒绝黄牛</span>
+        <span class="badge-safe">✅ 官方渠道</span>
+        <span class="badge-safe">✅ 真实公告</span>
+        <span class="badge-safe">✅ 免费使用</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-grid">
+    <div class="home-card" onclick="switchTab('ticket')">
+      <div class="hc-icon">🎫</div><h3>抢票提醒中心</h3>
+      <p>真实演出公告聚合（附来源链接），时间筛选 + 多级提醒 + 日历同步 + 回流票监控。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="switchTab('trip')">
+      <div class="hc-icon">🗺️</div><h3>观演出行助手</h3>
+      <p>场馆周边地图、酒店推荐、交通方案对比、必带清单，一键导出 PDF 行程单。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="switchTab('budget')">
+      <div class="hc-icon">💰</div><h3>花销计算 + 收纳台账</h3>
+      <p>行程花销实时核算；小卡/专辑/官周分类台账，月度季度年度可视化，冲动消费预警。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="switchTab('culture')">
+      <div class="hc-icon">✈️</div><h3>跨国追星攻略</h3>
+      <p>目的地速览、追星外语短句库（带朗读）、行李清单、境外省钱工具、应急包速查。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="switchTab('tools')">
+      <div class="hc-icon">🎪</div><h3>现场随身工具箱</h3>
+      <p>LED 滚动弹幕、虚拟应援棒、现场分贝计、场馆违禁品速查，看演唱会全靠它。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="switchTab('memo')">
+      <div class="hc-icon">📝</div><h3>追星备忘录</h3>
+      <p>类文档式自由编辑：标题、清单、待办随意组合，自动保存，可导出备份。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="switchTab('community')">
+      <div class="hc-icon">💬</div><h3>网友互助社区</h3>
+      <p>信息交流 + 应援物料互换，关键词屏蔽、举报审核，安全高效可管控。</p>
+      <span class="hc-link">进入 →</span>
+    </div>
+    <div class="home-card" onclick="aiSummarize()">
+      <div class="hc-icon">🤖</div><h3>AI 智能总结</h3>
+      <p>一键汇总你的提醒、预算、台账、备忘录与社区动态，生成专属追星小结与理智消费建议。</p>
+      <span class="hc-link">生成总结 →</span>
+    </div>
+    <div class="home-card home-card-warn">
+      <div class="hc-icon">🛡️</div><h3>防骗第一课</h3>
+      <p>没有「内部票」，没有「预留票」，强实名票不可转让。任何私下转账都有风险！</p>
+      <span class="hc-link warn-text">牢记于心 ⚠️</span>
+    </div>
+  </section>
+
+  <section class="visitor-box" id="visitor-box">
+    <div class="visitor-emoji">🎉</div>
+    <h3>恭喜你发现宝藏！</h3>
+    <p id="visitor-counter" class="visitor-num">正在统计访客数…</p>
+    <p class="mini-tip" id="visitor-sub">你是本网页第 ？ 位访客 · 注册账号后这里显示注册用户数</p>
+  </section>
+</main>
+
+<!-- ======== 模块1：抢票提醒中心 ======== -->
+<main id="tab-ticket" class="tab-page">
+  <div class="page-head">
+    <h2>🎫 抢票提醒中心</h2>
+    <p class="page-sub">真实演出公告聚合（附来源链接） · 多级提醒 · 日历同步 · 回流票监控</p>
+  </div>
+
+  <div class="notice-bar warn">
+    ⚠️ <b>合规声明：</b>本站不提供代抢、抢票脚本、黄牛渠道，仅做信息提醒与流程辅助。请认准官方购票渠道；<b>无内部票、无预留票、强实名票不可转让</b>，谨防诈骗！
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>平台</label>
+      <select id="f-platform" onchange="resetShowPage()"></select>
+    </div>
+    <div class="filter-group">
+      <label>城市</label>
+      <select id="f-city" onchange="resetShowPage()">
+        <option value="">全部城市</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>搜索艺人</label>
+      <input type="text" id="f-artist" placeholder="如：ITZY / ENHYPEN" oninput="resetShowPage()">
+    </div>
+    <button class="btn btn-sm btn-ghost" onclick="askNotifyPermission()">🔔 开启浏览器通知</button>
+  </div>
+
+  <div class="time-chips" id="time-chips">
+    <span class="tc-label">🕐 时间：</span>
+    <button class="time-chip active" data-days="0" onclick="setTimeRange(0,this)">全部</button>
+    <button class="time-chip" data-days="7" onclick="setTimeRange(7,this)">近1周</button>
+    <button class="time-chip" data-days="30" onclick="setTimeRange(30,this)">近1个月</button>
+    <button class="time-chip" data-days="92" onclick="setTimeRange(92,this)">近3个月</button>
+    <button class="time-chip" data-days="183" onclick="setTimeRange(183,this)">近半年</button>
+    <button class="time-chip" data-days="365" onclick="setTimeRange(365,this)">近1年</button>
+  </div>
+
+  <div class="data-tip">📡 以下均为<b>真实演出公告</b>，聚合自澳门售票网、Vogue HK、澳门本地宝、KSD 韩星网等公开信息，点击卡片内「查看来源公告」可跳转原文核实。开票时间与票价可能调整，最终以官方售票平台为准。</div>
+  <div id="show-list" class="show-list"></div>
+  <div class="load-more-wrap">
+    <button id="load-more-btn" class="btn btn-ghost" onclick="loadMoreShows()">⬇️ 加载更多</button>
+    <p id="show-count-text" class="mini-tip" style="text-align:center"></p>
+  </div>
+
+  <section class="panel" style="margin-top:20px">
+    <h3>🎟️ 官方购票平台直达（拒绝黄牛，只走官方）</h3>
+    <p class="panel-sub">覆盖韩国 / 中国内地 / 中国香港·澳门 / 新加坡 / 日本 / 泰国主流官方票务平台，点击直达官网</p>
+    <div id="platform-list" class="plat-grid"></div>
+  </section>
+
+  <div class="two-col">
+    <section class="panel">
+      <h3>✅ 抢票准备清单</h3>
+      <p class="panel-sub">开票前逐项确认，进度自动保存在本机</p>
+      <div id="prep-checklist" class="checklist"></div>
+      <div class="progress-wrap"><div id="prep-progress" class="progress-bar"></div></div>
+      <p id="prep-text" class="progress-text"></p>
+    </section>
+
+    <section class="panel">
+      <h3>♻️ 回流票监控指南</h3>
+      <p class="panel-sub">开票后这些时间点最容易出回流票，设好提醒蹲守官方渠道</p>
+      <ul class="flow-list">
+        <li><b>开票后 5 / 10 / 15 分钟</b> —— 支付超时释放的第一波回流</li>
+        <li><b>每个整点 & 半点</b> —— 订单批量取消释放时段</li>
+        <li><b>开演前 24~48 小时</b> —— 行程冲突退票高峰</li>
+        <li><b>开演当天上午</b> —— 最后一波官方回流</li>
+      </ul>
+      <button class="btn btn-primary btn-block" onclick="setFlowReminder()">🔔 为我设置回流票蹲守提醒</button>
+      <p class="mini-tip">提醒仅通过浏览器通知发送（需保持页面开启），短信提醒可在正式版中绑定手机号开通。</p>
+    </section>
+  </div>
+
+  <div id="my-reminders" class="panel" style="margin-top:20px">
+    <h3>🔔 我的提醒（保存在本机浏览器）</h3>
+    <div id="reminder-list"></div>
+  </div>
+</main>
+
+<!-- ======== 模块2：观演出行助手 ======== -->
+<main id="tab-trip" class="tab-page">
+  <div class="page-head">
+    <h2>🗺️ 观演出行助手</h2>
+    <p class="page-sub">场馆定位 · 酒店推荐 · 交通方案 · 必带清单 · PDF 行程单</p>
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>选择场馆</label>
+      <select id="venue-select" onchange="renderVenue()"></select>
+    </div>
+    <div class="filter-group">
+      <label>酒店筛选</label>
+      <select id="hotel-filter" onchange="renderVenue()">
+        <option value="">全部酒店</option>
+        <option value="cancel">可免费取消</option>
+        <option value="metro">近地铁</option>
+        <option value="breakfast">含早餐</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>酒店排序</label>
+      <select id="hotel-sort" onchange="renderVenue()">
+        <option value="dist">按距离</option>
+        <option value="price">按价格</option>
+      </select>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="exportItinerary()">📄 导出 PDF 行程单</button>
+  </div>
+
+  <div id="venue-detail"></div>
+
+  <section class="panel" style="margin-top:20px">
+    <h3>🧭 官方旅游信息网站（权威 · 无商业侵权风险）</h3>
+    <p class="panel-sub">各国/地区官方旅游局网站，签证、交通、住宿、节庆信息以此为准</p>
+    <div id="travel-sites" class="plat-grid"></div>
+  </section>
+</main>
+
+<!-- ======== 模块3：花销计算 + 收纳台账 ======== -->
+<main id="tab-budget" class="tab-page">
+  <div class="page-head">
+    <h2>💰 追星花销计算 · 收纳台账</h2>
+    <p class="page-sub">本次行程实时核算 + 日常追星收纳分类记账 · 冲动消费预警 · 理智追星</p>
+  </div>
+
+  <div class="sub-tabs">
+    <button class="sub-tab active" data-sub="btrip" onclick="switchSub('btrip')">🧳 本次行程花销计算</button>
+    <button class="sub-tab" data-sub="ledger" onclick="switchSub('ledger')">📒 追星收纳台账</button>
+  </div>
+
+  <!-- 子页A：行程花销计算器 -->
+  <div id="sub-btrip" class="sub-page active">
+    <div class="budget-layout">
+      <div class="budget-form">
+        <section class="panel">
+          <h3>📌 固定项</h3>
+          <div class="b-grid" id="budget-fixed"></div>
+        </section>
+        <section class="panel">
+          <h3>🎀 浮动项</h3>
+          <div class="b-grid" id="budget-float"></div>
+        </section>
+        <section class="panel">
+          <h3>👀 隐性成本（容易被忽略！）</h3>
+          <div class="b-grid" id="budget-hidden"></div>
+        </section>
+        <section class="panel">
+          <h3>👥 拼团 & 预算红线</h3>
+          <div class="b-grid">
+            <div class="b-item"><label>同行人数（含自己）</label><input type="number" id="b-people" value="1" min="1" oninput="calcBudget()"></div>
+            <div class="b-item"><label>行程天数</label><input type="number" id="b-days" value="2" min="1" oninput="calcBudget()"></div>
+            <div class="b-item"><label>🚨 预算红线（¥，超过弹窗提醒）</label><input type="number" id="b-redline" min="0" placeholder="如 5000" oninput="calcBudget()"></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="budget-result">
+        <section class="panel panel-sticky">
+          <h3>🧾 实时账单</h3>
+          <div id="budget-summary"></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="exportBudgetCSV()">📥 导出 Excel(CSV)</button>
+            <button class="btn btn-ghost" onclick="copyBudgetText()">📋 复制账单文本</button>
+          </div>
+          <p class="mini-tip">💡 手机端可直接截图分享给拼房拼车的小伙伴对账</p>
+          <div id="budget-advice"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子页B：追星收纳台账 -->
+  <div id="sub-ledger" class="sub-page">
+    <div class="notice-bar" style="background:#f1eaff;border:1px solid #ddd2ff;color:#5b21b6">
+      📒 <b>收纳台账</b>与「本次行程花销」互相独立：这里记录的是日常收藏消费（小卡 / 手幅 / 专辑 / 杂志 / 官周 / 闲鱼二手），帮你看清每月为爱发电多少，理智消费不吃土 💜 数据保存在本机浏览器。
+    </div>
+    <div class="two-col">
+      <section class="panel">
+        <h3>✍️ 记一笔</h3>
+        <div class="form-grid">
+          <label>日期</label>
+          <input type="date" id="lg-date">
+          <label>分类</label>
+          <select id="lg-cat">
+            <option>小卡</option><option>手幅</option><option>专辑</option><option>杂志</option>
+            <option>官方周边</option><option>闲鱼二手·买入</option><option>闲鱼二手·卖出（回血）</option><option>代购/其他</option>
+          </select>
+          <label>名称 / 备注</label>
+          <input type="text" id="lg-name" maxlength="40" placeholder="如：SVT 新专 CARAT 盘 ×2">
+          <label>金额（¥）</label>
+          <input type="number" id="lg-amt" min="0" step="0.01" placeholder="0.00">
+          <button class="btn btn-primary" onclick="addLedger()">＋ 记入台账</button>
+        </div>
+        <div class="panel-divider"></div>
+        <h3 style="margin-top:14px">🚨 冲动消费提醒</h3>
+        <div class="form-grid">
+          <label>每月追星预算红线（¥）</label>
+          <input type="number" id="lg-budget" min="0" placeholder="如 800" onchange="saveLedgerBudget()">
+          <p class="mini-tip">当月台账净支出超过红线时会弹窗提醒理性消费，并附省钱小建议。</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="ledger-head">
+          <h3>📊 动态账单</h3>
+          <div class="ledger-nav">
+            <select id="lg-period" onchange="renderLedger()">
+              <option value="month">按月</option>
+              <option value="quarter">按季度</option>
+              <option value="year">按年</option>
+            </select>
+            <button class="btn btn-sm btn-ghost" onclick="ledgerNav(-1)">←</button>
+            <b id="lg-period-label"></b>
+            <button class="btn btn-sm btn-ghost" onclick="ledgerNav(1)">→</button>
+          </div>
+        </div>
+        <div id="lg-stats"></div>
+        <div id="lg-chart"></div>
+        <div id="lg-trend"></div>
+        <div class="btn-row">
+          <button class="btn btn-ghost btn-sm" onclick="exportLedgerCSV()">📥 导出台账 CSV</button>
+        </div>
+      </section>
+    </div>
+    <section class="panel" style="margin-top:18px">
+      <h3>🧾 本期明细</h3>
+      <div id="lg-list"></div>
+    </section>
+  </div>
+</main>
+
+<!-- ======== 模块4：跨国追星 ======== -->
+<main id="tab-culture" class="tab-page">
+  <div class="page-head">
+    <h2>✈️ 跨国追星 · 本地文化体验</h2>
+    <p class="page-sub">目的地攻略 · 外语短句库 · 行李清单 · 境外省钱 · 应急包速查</p>
+  </div>
+
+  <div class="sub-tabs" id="culture-tabs">
+    <button class="sub-tab active" data-sub="cdest" onclick="switchSub('cdest')">📖 目的地攻略</button>
+    <button class="sub-tab" data-sub="cphrase" onclick="switchSub('cphrase')">🗣️ 外语短句库</button>
+    <button class="sub-tab" data-sub="cluggage" onclick="switchSub('cluggage')">🧳 行李分类清单</button>
+    <button class="sub-tab" data-sub="csave" onclick="switchSub('csave')">💸 境外省钱工具</button>
+    <button class="sub-tab" data-sub="csos" onclick="switchSub('csos')">🆘 境外应急包</button>
+  </div>
+
+  <!-- 目的地攻略 -->
+  <div id="sub-cdest" class="sub-page active">
+    <div class="dest-tabs" id="dest-tabs"></div>
+    <div id="dest-detail"></div>
+    <section class="panel note-panel" style="margin-top:18px">
+      <h3>✍️ 我的补充笔记（当前目的地）</h3>
+      <p class="panel-sub">网站攻略之外，你可以自由记录/修正这个目的地的信息（如新发现的店铺、政策变化），按目的地分开保存在本机，输入即自动保存</p>
+      <textarea id="cdest-note" class="user-note" rows="4" placeholder="例：明洞换钱所汇率比机场好很多；弘大周边店周一闭店…"></textarea>
+    </section>
+  </div>
+
+  <!-- 外语短句库 -->
+  <div id="sub-cphrase" class="sub-page">
+    <div class="notice-bar" style="background:#f1eaff;border:1px solid #ddd2ff;color:#5b21b6">
+      🗣️ 演唱会喊话 / 问路 / 买周边 / 退换货常用句，点 <b>🔊</b> 即可朗读发音（使用浏览器语音引擎）。点 <b>⭐</b> 收藏，收藏的短句保存在本机、离线也能查看。下方还有 <b>🤖 自动翻译</b>，可把任意中文一键翻译并朗读。
+    </div>
+    <section class="panel trans-box">
+      <h3>🤖 自动翻译（免费 · 实时）</h3>
+      <p class="panel-sub">输入任意中文，一键翻译成目标语言。翻译由 MyMemory（Translated 官方翻译引擎）提供，<b>免费、无需注册、专业可靠</b>。结果可朗读、可一键存到「我的补充短句」。</p>
+      <textarea id="trans-input" class="user-note" rows="2" placeholder="输入要翻译的中文，例如：请问洗手间在哪里？ / 可以合影吗？"></textarea>
+      <div class="filter-bar slim" style="margin-top:10px">
+        <div class="phrase-langs" id="trans-langs"></div>
+        <button class="btn btn-sm btn-primary" id="trans-go" onclick="doTranslate()">🌐 翻译</button>
+      </div>
+      <div id="trans-result" class="trans-result"></div>
+    </section>
+    <div class="filter-bar slim">
+      <div class="phrase-langs" id="phrase-langs"></div>
+      <select id="phrase-cat" onchange="renderPhrases()">
+        <option value="">全部场景</option>
+        <option>🎤 演唱会喊话</option><option>🧭 问路交通</option><option>🛍️ 买周边</option><option>↩️ 退换货</option><option>🆘 应急求助</option>
+      </select>
+      <button class="btn btn-sm btn-ghost" id="fav-toggle" onclick="toggleFavView()">⭐ 只看收藏 (<span id="fav-count">0</span>)</button>
+    </div>
+    <div id="phrase-list"></div>
+    <section class="panel" style="margin-top:18px">
+      <h3>📺 B 站高赞教学视频推荐</h3>
+      <p class="panel-sub">按「收藏最多 / 播放最多」排序直达 B 站搜索结果，跟着高赞视频学发音更地道</p>
+      <div id="bili-links" class="bili-grid"></div>
+    </section>
+    <section class="panel note-panel" style="margin-top:18px">
+      <h3>✍️ 我的补充短句</h3>
+      <p class="panel-sub">记录你自己学到的实用短句和发音技巧，自动保存在本机 <span id="note-saved-cphrase" class="mini-tip"></span></p>
+      <textarea data-note="cphrase" class="user-note" rows="4" placeholder="例：머리부터 발끝까지 다 좋아（从头到脚都喜欢）…"></textarea>
+    </section>
+  </div>
+
+  <!-- 行李分类清单 -->
+  <div id="sub-cluggage" class="sub-page">
+    <div class="notice-bar warn">
+      🧳 <b>三分类打包法：</b>先分「随身安检可带 / 托运可带 / 禁止入境」，再核对应援物品海关提醒。勾选状态自动保存，出发前对着清单过一遍！
+    </div>
+    <div id="luggage-cols" class="grid-3"></div>
+    <section class="panel" style="margin-top:18px">
+      <h3>🚨 应援物品海关 & 安检特别提醒</h3>
+      <div id="luggage-fan" class="checklist"></div>
+    </section>
+    <section class="panel note-panel" style="margin-top:18px">
+      <h3>✍️ 我的补充打包清单</h3>
+      <p class="panel-sub">清单没覆盖到的私人物品记这里，自动保存在本机 <span id="note-saved-cluggage" class="mini-tip"></span></p>
+      <textarea data-note="cluggage" class="user-note" rows="4" placeholder="例：隐形眼镜备用一副、晕车药、便携小板凳…"></textarea>
+    </section>
+  </div>
+
+  <!-- 境外省钱工具 -->
+  <div id="sub-csave" class="sub-page">
+    <div class="grid-3">
+      <section class="panel">
+        <h3>💱 外币实时换算</h3>
+        <p class="panel-sub">换算结果可一键填入「花销计算器」，汇率可手动修正</p>
+        <div class="form-grid">
+          <label>金额（外币）</label>
+          <input type="number" id="fx-amt" value="10000" min="0" oninput="calcFx()">
+          <label>币种</label>
+          <select id="fx-cur" onchange="fxCurChange()"></select>
+          <label>汇率（1 外币 ≈ ? 人民币，可修改）</label>
+          <input type="number" id="fx-rate" step="0.0001" oninput="fxManual()">
+          <div class="fx-result" id="fx-result">≈ ¥ 0</div>
+          <div class="btn-row" style="margin-top:6px">
+            <button class="btn btn-sm btn-ghost" onclick="fetchLiveRates()">🔄 刷新实时汇率</button>
+          </div>
+          <p class="mini-tip" id="fx-status">基准汇率（可手动修改）</p>
+          <button class="btn btn-primary" onclick="fxToBudget()">📥 计入花销计算器「购物」项</button>
+        </div>
+      </section>
+      <section class="panel">
+        <h3>🚇 当地交通卡攻略</h3>
+        <div id="save-transit"></div>
+      </section>
+      <section class="panel">
+        <h3>🧋 场馆周边平价补给</h3>
+        <p class="panel-sub">演唱会排队水和补给别在场馆里买，贵 2~3 倍！</p>
+        <div id="save-stores"></div>
+      </section>
+    </div>
+    <section class="panel note-panel" style="margin-top:18px">
+      <h3>✍️ 我的省钱心得</h3>
+      <p class="panel-sub">补充你实测有效的省钱技巧，自动保存在本机 <span id="note-saved-csave" class="mini-tip"></span></p>
+      <textarea data-note="csave" class="user-note" rows="4" placeholder="例：首尔便利店 CU 会员码扫一下能积分；机场退税柜台早上人少…"></textarea>
+    </section>
+  </div>
+
+  <!-- 境外应急包 -->
+  <div id="sub-csos" class="sub-page">
+    <div class="notice-bar warn">
+      🆘 <b>一页速查：</b>建议出发前截图保存到手机相册。全球领事保护与服务应急热线：<b>+86-10-12308</b>（24小时）。
+    </div>
+    <div class="dest-tabs" id="sos-tabs"></div>
+    <div id="sos-detail"></div>
+    <div class="btn-row" style="justify-content:center">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ 打印 / 存为 PDF 随身带</button>
+    </div>
+    <section class="panel note-panel" style="margin-top:18px">
+      <h3>✍️ 我的应急信息补充</h3>
+      <p class="panel-sub">记录你的保险单号、紧急联系人、酒店地址等私人应急信息（仅存本机，不上传）<span id="note-saved-csos" class="mini-tip"></span></p>
+      <textarea data-note="csos" class="user-note" rows="4" placeholder="例：旅行保险保单号 XXXX；紧急联系人：妈妈 138…；入住酒店：首尔 XX 酒店 302 房…"></textarea>
+    </section>
+  </div>
+</main>
+
+<!-- ======== 模块5：现场随身工具箱 ======== -->
+<main id="tab-tools" class="tab-page">
+  <div class="page-head">
+    <h2>🎪 演唱会现场随身工具箱</h2>
+    <p class="page-sub">LED 滚动弹幕 · 虚拟应援棒 · 现场分贝计 · 违禁品速查 —— 进场前记得充满电！</p>
+  </div>
+
+  <div class="two-col">
+    <!-- LED 弹幕 -->
+    <section class="panel">
+      <h3>📟 LED 滚动弹幕</h3>
+      <p class="panel-sub">自定义文字 + 应援色，全屏滚动、防息屏常亮，饭撒 / 喊口号超好用</p>
+      <div class="form-grid">
+        <label>弹幕文字</label>
+        <input type="text" id="led-text" maxlength="30" value="金珉奎 看这里 ♥">
+        <label>应援色（预设参考色，最终以官方公告为准）</label>
+        <div class="color-presets" id="led-colors"></div>
+        <div class="b-grid">
+          <div class="b-item"><label>自定义颜色</label><input type="color" id="led-color" value="#f7cac9"></div>
+          <div class="b-item"><label>字号</label><select id="led-size"><option value="18">超大</option><option value="14" selected>大</option><option value="10">中</option></select></div>
+          <div class="b-item"><label>滚动速度</label><select id="led-speed"><option value="14">慢</option><option value="9" selected>中</option><option value="5">快</option></select></div>
+          <div class="b-item"><label>闪烁</label><select id="led-blink"><option value="0">不闪烁</option><option value="1">慢闪</option><option value="2">快闪</option></select></div>
+        </div>
+        <label class="rotate-check"><input type="checkbox" id="led-rotate"> 📱 手机竖屏模式：强制横向显示（文字旋转 90°，竖屏握持也能横向大字滚动）</label>
+        <button class="btn btn-primary btn-block" onclick="openLED()">▶️ 全屏开启弹幕（自动防息屏）</button>
+        <p class="mini-tip">💡 手机不方便转横屏时，勾选上方「强制横向显示」即可竖屏举起、文字横向滚动；点击屏幕任意位置退出。防息屏依赖浏览器支持（建议 Chrome / Safari 新版本）。</p>
+      </div>
+    </section>
+
+    <!-- 虚拟应援棒 -->
+    <section class="panel">
+      <h3>🪄 虚拟应援棒</h3>
+      <p class="panel-sub">没带实体应援棒应急用！内置各团参考应援色，支持呼吸 / 闪烁 / 随音乐律动</p>
+      <div class="form-grid">
+        <label>选择应援色</label>
+        <div class="color-presets" id="stick-colors"></div>
+        <div class="b-grid">
+          <div class="b-item"><label>自定义颜色</label><input type="color" id="stick-color" value="#7f00ff"></div>
+          <div class="b-item"><label>模式</label><select id="stick-mode">
+            <option value="steady">常亮</option><option value="breath" selected>呼吸</option><option value="blink">闪烁</option><option value="music">随音乐律动（需麦克风）</option>
+          </select></div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="openStick()">▶️ 全屏点亮应援棒（自动防息屏）</button>
+        <p class="mini-tip">💡 律动模式会请求麦克风权限，声音只在本机处理、绝不上传。点击屏幕退出。</p>
+      </div>
+    </section>
+
+    <!-- 分贝计 -->
+    <section class="panel">
+      <h3>📢 现场分贝计</h3>
+      <p class="panel-sub">测场馆噪音，判断什么时候适合喊应援口号（手机麦克风估算值，仅供参考）</p>
+      <div class="db-meter">
+        <div class="db-value" id="db-value">--</div>
+        <div class="db-unit">dB（估算）</div>
+        <div class="db-bar-wrap"><div class="db-bar" id="db-bar"></div></div>
+        <div class="db-hint" id="db-hint">点击下方按钮开始检测</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="db-start" onclick="startDB()">🎙️ 开始检测</button>
+        <button class="btn btn-ghost" onclick="stopDB()">⏹ 停止</button>
+      </div>
+      <div class="checklist" style="margin-top:12px">
+        <div class="check-item" style="cursor:default"><span>🤫</span><span style="font-size:13px"><b>&lt; 60dB</b> 安静 —— VCR / 慢歌环节，别喊口号</span></div>
+        <div class="check-item" style="cursor:default"><span>🙂</span><span style="font-size:13px"><b>60~80dB</b> 正常 —— 可以小声跟唱、挥应援棒</span></div>
+        <div class="check-item" style="cursor:default"><span>🔥</span><span style="font-size:13px"><b>80~100dB</b> 热烈 —— 应援口号跟上，不会突兀</span></div>
+        <div class="check-item" style="cursor:default"><span>🌋</span><span style="font-size:13px"><b>&gt; 100dB</b> 巅峰 —— 尽情喊！注意保护嗓子和听力</span></div>
+      </div>
+    </section>
+
+    <!-- 违禁品速查 -->
+    <section class="panel">
+      <h3>🚫 禁止携带物品速查</h3>
+      <p class="panel-sub">选择场馆，自动列出安检黑名单与限制（以现场安检为准）</p>
+      <div class="filter-bar slim">
+        <select id="ban-venue" onchange="renderBans()"></select>
+        <input type="text" id="ban-search" placeholder="搜物品：如 充电宝 / 相机" oninput="renderBans()">
+      </div>
+      <div id="ban-list"></div>
+    </section>
+  </div>
+
+  <!-- 歌单配套 -->
+  <section class="panel" style="margin-top:18px">
+    <h3>🎶 歌单配套 · 搜歌单 + 歌词大屏</h3>
+    <p class="panel-sub">选常用艺人一键跳各大音乐平台搜歌单（歌词在平台内查看）；也可在本页直接搜歌词，支持「🖥️ 大屏呈现」跟着唱。</p>
+    <div class="phrase-langs" id="pl-groups" style="margin-bottom:10px"></div>
+    <div class="filter-bar slim">
+      <input type="text" id="pl-input" placeholder="或输入艺人 / 歌曲，如 TWICE 或 FANCY" style="flex:1;min-width:160px">
+      <button class="btn btn-sm btn-primary" onclick="renderPlaylistLinks()">🔍 搜歌单</button>
+    </div>
+    <div class="bili-grid" id="pl-links" style="margin-top:10px"></div>
+    <div class="filter-bar slim" style="margin-top:14px">
+      <input type="text" id="ly-input" placeholder="搜歌词：歌曲名 或 歌曲名 - 艺人，如 FANCY - TWICE" style="flex:1;min-width:160px">
+      <button class="btn btn-sm btn-ghost" onclick="fetchLyrics()">📜 搜歌词</button>
+    </div>
+    <div id="lyric-box" class="trans-result"></div>
+  </section>
+
+  <!-- 歌词模块 -->
+  <section class="panel" style="margin-top:18px">
+    <h3>🎵 歌词模块 · 浏览器搜歌词 + 离线收藏</h3>
+    <p class="panel-sub">直接在浏览器搜歌词（不走音乐软件）；找到后粘贴收藏到本机歌词库，支持离线查看与下载 .txt。</p>
+    <div class="filter-bar slim">
+      <input type="text" id="lyr-title" placeholder="歌名，如 FANCY" style="flex:1;min-width:120px">
+      <input type="text" id="lyr-artist" placeholder="歌手（选填），如 TWICE" style="flex:1;min-width:120px">
+      <select id="lyr-engine">
+        <option value="baidu">百度</option>
+        <option value="bing">必应</option>
+        <option value="google">Google</option>
+      </select>
+      <button class="btn btn-sm btn-primary" onclick="searchLyricsWeb()">🔍 浏览器搜歌词</button>
+    </div>
+    <p class="mini-tip">💡 点「浏览器搜歌词」会在<strong>新标签页</strong>打开搜索结果（百度 / 必应 / Google，<strong>不是音乐软件</strong>），复制歌词回来粘贴到下方即可收藏。</p>
+    <div class="filter-bar slim" style="margin-top:12px">
+      <button class="btn btn-sm btn-ghost" onclick="tryFetchLyrics()">🤖 试试自动抓取（部分曲目，K-pop 多未收录）</button>
+    </div>
+    <textarea id="lyr-text" class="user-note" rows="6" placeholder="把在浏览器里找到的歌词粘贴到这里…"></textarea>
+    <div class="btn-row" style="margin-top:10px">
+      <button class="btn btn-sm btn-primary" onclick="saveLyric()">💾 存到我的歌词库</button>
+      <button class="btn btn-sm btn-ghost" onclick="clearLyricInput()">🧹 清空</button>
+    </div>
+    <h4 style="margin:18px 0 8px">📚 我的歌词库（本机保存 · 离线可看）</h4>
+    <div id="lyr-library" class="lyr-library"></div>
+  </section>
+
+  <!-- 应援物料出发清单 -->
+  <section class="panel" style="margin-top:18px">
+    <h3>🎒 应援物料出发清单</h3>
+    <p class="panel-sub">出发前逐项打勾，防止到了现场才发现漏带。清单存在本机，关掉网页也在。</p>
+    <div class="checklist-head">
+      <div class="checklist-progress">已准备 <b id="checklist-count">0/0</b></div>
+      <div class="checklist-bar"><div id="checklist-bar-fill" class="checklist-bar-fill"></div></div>
+    </div>
+    <div id="checklist-box" class="checklist-box"></div>
+    <div class="filter-bar slim" style="margin-top:12px">
+      <input type="text" id="checklist-input" placeholder="添加自定义物品，如 应援手幅" style="flex:1;min-width:160px" onkeydown="if(event.key==='Enter')addCheckItem()">
+      <button class="btn btn-sm btn-primary" onclick="addCheckItem()">➕ 添加</button>
+    </div>
+  </section>
+</main>
+
+<!-- ======== 模块6：追星备忘录 ======== -->
+<main id="tab-mine" class="tab-page">
+  <div class="container">
+    <h2 class="page-title">👤 我的 · 个人中心</h2>
+    <p class="panel-sub">你收藏与发布的内容都在这里聚合，方便随时回看与管理。</p>
+
+    <section class="panel mine-card" id="mine-account"></section>
+
+    <div class="mine-grid">
+      <section class="panel">
+        <h3>⭐ 收藏的短句 <span class="muted" id="mine-phrase-n">0</span></h3>
+        <div id="mine-phrases" class="mine-list"></div>
+      </section>
+      <section class="panel">
+        <h3>📚 我的歌词库 <span class="muted" id="mine-lyric-n">0</span></h3>
+        <div id="mine-lyrics" class="mine-list"></div>
+      </section>
+      <section class="panel">
+        <h3>💬 我发布的帖子 <span class="muted" id="mine-post-n">0</span></h3>
+        <div id="mine-posts" class="mine-list"></div>
+      </section>
+      <section class="panel">
+        <h3>📝 备忘录 <span class="muted" id="mine-memo-n">0</span></h3>
+        <div id="mine-memo" class="mine-list"></div>
+      </section>
+    </div>
+    <p class="mini-tip">🔒 以上数据保存在本机浏览器（登录账号后按账号隔离）。换设备 / 清缓存可能丢失，重要内容记得导出备份。</p>
+  </div>
+</main>
+
+<main id="tab-memo" class="tab-page">
+  <div class="page-head">
+    <h2>📝 追星备忘录 · 云存档</h2>
+    <p class="page-sub">像文档一样自由编辑：标题 / 文字 / 待办清单 / 引用随意组合 · 每次修改自动保存在本机 · 可导出备份</p>
+  </div>
+
+  <div class="memo-toolbar">
+    <span class="tc-label">插入块：</span>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('h1')">H1 标题</button>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('h2')">H2 子标题</button>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('text')">📄 文本</button>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('todo')">☑️ 待办</button>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('quote')">❝ 引用</button>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('divider')">— 分割线</button>
+    <button class="btn btn-sm btn-ghost" onclick="addBlock('h3')">H3 子标题</button>
+    <span class="memo-sep"></span>
+    <span class="tc-label">选中文字后：</span>
+    <span class="fmt-grp">
+      <button class="btn btn-sm btn-ghost" title="小号字" onmousedown="event.preventDefault()" onclick="fmtMemo('fontSize','2')">A⁻</button>
+      <button class="btn btn-sm btn-ghost" title="中号字（默认）" onmousedown="event.preventDefault()" onclick="fmtMemo('fontSize','3')">A</button>
+      <button class="btn btn-sm btn-ghost" title="大号字" onmousedown="event.preventDefault()" onclick="fmtMemo('fontSize','5')">A⁺</button>
+      <button class="btn btn-sm btn-ghost" title="特大字" onmousedown="event.preventDefault()" onclick="fmtMemo('fontSize','6')">A⁺⁺</button>
+    </span>
+    <label class="fmt-color" title="文字颜色">🎨<input type="color" value="#e11d8f" onmousedown="event.preventDefault()" oninput="fmtMemo('foreColor',this.value)"></label>
+    <label class="fmt-color" title="高光/底色">🖍️<input type="color" value="#fff3a0" onmousedown="event.preventDefault()" oninput="fmtMemo('hiliteColor',this.value)"></label>
+    <button class="btn btn-sm btn-ghost" title="清除格式" onmousedown="event.preventDefault()" onclick="fmtMemo('removeFormat')">清除格式</button>
+    <span class="memo-sep"></span>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('ticket')">⚡ 模板：抢票信息</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('trip')">⚡ 模板：行程规划</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('goods')">⚡ 模板：物料清单</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('budget')">⚡ 模板：追星月度预算</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('rehearsal')">⚡ 模板：应援排练</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('drama')">⚡ 模板：追剧/打歌台打卡</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('birthday')">⚡ 模板：爱豆生日应援</button>
+    <button class="btn btn-sm btn-ghost" onclick="insertTemplate('resale')">⚡ 模板：出物回血记录</button>
+    <span class="memo-sep"></span>
+    <button class="btn btn-sm btn-primary" onclick="exportMemo()">📥 导出 Markdown</button>
+    <span id="memo-saved" class="mini-tip">已自动保存 ✅</span>
+  </div>
+
+  <div class="memo-doc" id="memo-doc"></div>
+  <p class="mini-tip" style="max-width:860px;margin:10px auto">💡 数据保存在本机浏览器（换设备请先导出备份）。正式版将支持账号云同步与多人协作。</p>
+</main>
+
+<!-- ======== 模块：实用资讯站 ======== -->
+<main id="tab-discover" class="tab-page">
+  <div class="page-head">
+    <h2>🔎 实用资讯站 · 搜索直达</h2>
+    <p class="page-sub">官方与常用平台一键搜索；点「＋加入备忘录」把渠道存进你的追星备忘录</p>
+  </div>
+  <div class="notice-bar warn">🔗 本站仅提供搜索 / 官网直达入口，不托管任何内容；请认准官方账号与官网，谨防仿冒与私生信息。</div>
+  <div id="site-list" class="plat-grid"></div>
+  <section class="panel note-panel" style="margin-top:18px">
+    <h3>✍️ 我收藏的资讯渠道</h3>
+    <p class="panel-sub">你「加入备忘录」的渠道会出现在这里，也可在「备忘录」里自由整理补充</p>
+    <textarea data-note="sites" class="user-note" rows="4" placeholder="例：收藏了 @XX 的应援博主，常出新加坡场攻略；Weverse 官方周边每周三补货…"></textarea>
+  </section>
+</main>
+
+<!-- ======== 模块7：网友互助社区 ======== -->
+<main id="tab-community" class="tab-page">
+  <div class="page-head">
+    <h2>💬 网友互助社区</h2>
+    <p class="page-sub">信息交流 + 应援物料互换 · 关键词屏蔽 · 举报审核 · 隐私保护</p>
+  </div>
+
+  <div class="notice-bar warn">
+    🛡️ <b>社区安全规则：</b>物料互换仅限<b>线下当面</b>进行，禁止金钱交易、禁止交易门票、禁止传播私生信息。平台不担保，仅提供信息撮合。辱骂 / 黄牛 / 私生相关关键词将被自动屏蔽。
+  </div>
+
+  <div class="sub-tabs">
+    <button class="sub-tab active" data-sub="board" onclick="switchSub('board')">📢 信息交流区</button>
+    <button class="sub-tab" data-sub="swap" onclick="switchSub('swap')">🔄 应援物料互换</button>
+  </div>
+
+  <!-- 子模块A：信息交流区 -->
+  <div id="sub-board" class="sub-page active">
+    <div class="two-col">
+      <section class="panel">
+        <h3>✍️ 发布信息</h3>
+        <p class="panel-sub">上传步骤：选择场次 → 填写标题 → 填写内容 → 提交 → 审核通过 → 公开</p>
+        <div class="form-grid">
+          <label>选择场次 / 城市</label>
+          <select id="post-show"></select>
+          <label>信息类型</label>
+          <select id="post-type">
+            <option>🚌 交通变更</option><option>🚪 入场调整</option><option>📣 应援时间</option>
+            <option>🏨 拼房拼车</option><option>💡 经验分享</option><option>❓ 求助提问</option>
+          </select>
+          <label>📋 快速模板（选类型自动套用，可自由修改）</label>
+          <select id="post-template" onchange="fillPostTemplate()">
+            <option value="">— 不使用模板，自己写 —</option>
+            <option value="car">🏨 拼房拼车</option>
+            <option value="traffic">🚌 交通变更</option>
+            <option value="entry">🚪 入场调整</option>
+            <option value="cheer">📣 应援时间</option>
+            <option value="share">💡 经验分享</option>
+            <option value="help">❓ 求助提问</option>
+          </select>
+          <label>标题</label>
+          <input type="text" id="post-title" maxlength="40" placeholder="一句话说清重点（40字内）">
+          <label>内容（可粘贴群聊重要通知文字）</label>
+          <textarea id="post-content" rows="4" maxlength="500" placeholder="详细信息...（截图上传功能正式版开放，当前请以文字为主）"></textarea>
+          <button class="btn btn-primary" onclick="submitPost()">🤖 提交（AI 智能审核）</button>
+          <p class="mini-tip">🛡️ 提交时将进行 <b>AI 智能审核</b>：自动识别违禁词、涉钱交易、站外联系方式等违规内容，违规将提示原因并拦截，合规内容即时发布。正式版另有管理员人工复审。</p>
+        </div>
+      </section>
+      <section class="panel">
+        <h3>📋 社区信息流</h3>
+        <div class="filter-bar slim">
+          <select id="board-filter-show" onchange="renderPosts()"><option value="">全部场次</option></select>
+          <select id="board-filter-type" onchange="renderPosts()">
+            <option value="">全部类型</option>
+            <option>🚌 交通变更</option><option>🚪 入场调整</option><option>📣 应援时间</option>
+            <option>🏨 拼房拼车</option><option>💡 经验分享</option><option>❓ 求助提问</option>
+          </select>
+        </div>
+        <div id="post-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 子模块B：应援物料互换 -->
+  <div id="sub-swap" class="sub-page">
+    <div class="two-col">
+      <section class="panel">
+        <h3>🆕 发布互换卡片</h3>
+        <p class="panel-sub">流程：选择物料类型 → 填写信息 → 设置互换条件 → 发布 → 匹配 → 站内联系 → 线下当面互换</p>
+        <div class="form-grid">
+          <label>物料名称</label>
+          <input type="text" id="swap-name" maxlength="30" placeholder="如：ITZY 澳门场限定手幅">
+          <label>物料类型</label>
+          <select id="swap-type"><option>手幅</option><option>小卡</option><option>明信片</option><option>灯牌配件</option><option>徽章/挂件</option><option>其他周边</option></select>
+          <label>偶像 / 团体</label>
+          <input type="text" id="swap-idol" maxlength="20" placeholder="如：ITZY">
+          <label>关联场次</label>
+          <select id="swap-show"></select>
+          <label>数量</label>
+          <input type="number" id="swap-count" value="1" min="1">
+          <label>互换需求（想换什么）</label>
+          <input type="text" id="swap-want" maxlength="50" placeholder="如：换留真小卡，1:1 当面换">
+          <label>互换地点 / 时间</label>
+          <input type="text" id="swap-place" maxlength="50" placeholder="如：演出当天 15:00 场馆东门集合点">
+          <label>📷 物料实拍图（选填，自动压缩后仅存本机）</label>
+          <input type="file" id="swap-img" accept="image/*" class="file-input">
+          <button class="btn btn-primary" onclick="submitSwap()">🤖 发布互换卡片（AI 智能审核）</button>
+          <p class="mini-tip">🔒 发布前将进行 AI 智能审核（拦截涉钱交易/违禁词）。联系方式仅通过站内信互通（演示版为占位），不公开任何隐私。禁止金钱交易！</p>
+        </div>
+      </section>
+      <section class="panel">
+        <h3>🔄 互换大厅</h3>
+        <div class="filter-bar slim">
+          <input type="text" id="swap-filter-idol" placeholder="搜偶像" oninput="renderSwaps()">
+          <select id="swap-filter-type" onchange="renderSwaps()">
+            <option value="">全部类型</option>
+            <option>手幅</option><option>小卡</option><option>明信片</option><option>灯牌配件</option><option>徽章/挂件</option><option>其他周边</option>
+          </select>
+          <select id="swap-filter-status" onchange="renderSwaps()">
+            <option value="">全部状态</option><option>求换</option><option>已换</option>
+          </select>
+        </div>
+        <div id="swap-list" class="swap-grid"></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- ======== 模块8：穿搭妆容指南 ======== -->
+<main id="tab-style" class="tab-page">
+  <div class="page-head">
+    <h2>💄 穿搭妆容指南</h2>
+    <p class="page-sub">按目的地 + 分阶段（小白 / 进阶 / 高手）· 含天气与场馆室内外穿搭 · 防脱妆技巧 · 拍照配色 · 各平台高质量视频直达</p>
+  </div>
+  <div class="dest-tabs" id="style-tabs"></div>
+  <div id="style-detail"></div>
+</main>
+
+<footer class="footer">
+  <p><b>STARGO 线下追星一站式小助手</b> v3.3 · 为爱发电，合规追星 💜</p>
+  <div class="footer-actions">
+    <button class="btn btn-sm btn-ghost" onclick="openReward()">💝 打赏创作者（现金 / 鲜花 / 点赞）</button>
+    <button class="btn btn-sm btn-ghost" onclick="openFeedback()">📮 留言反馈（一键送达创作者邮箱）</button>
+    <button class="btn btn-sm btn-ghost" onclick="openSettings()">⚙️ 网页设置（仅本机生效，互不干扰）</button>
+  </div>
+  <p class="footer-legal">本站不提供代抢/抢票脚本/票务交易，所有演出信息聚合自公开公告并附来源链接，购票请以官方渠道为准 · 社区内容仅供参考，平台不担保线下交换行为 · 请保护个人隐私与财产安全 · 你的所有操作数据仅保存在本机浏览器，各用户之间互不影响</p>
+</footer>
+
+<!-- 全屏工具覆盖层 -->
+<div id="led-overlay" class="tool-overlay" onclick="closeOverlay()">
+  <div id="led-track" class="led-track"><span id="led-span"></span></div>
+</div>
+<div id="stick-overlay" class="tool-overlay" onclick="closeOverlay()">
+  <div id="stick-glow" class="stick-glow"></div>
+  <div class="stick-hint">点击屏幕任意位置退出 · 整个屏幕已点亮你的应援色</div>
+</div>
+<div id="lyric-overlay" class="tool-overlay lyric-overlay" onclick="closeOverlay()">
+  <div class="lyric-big" id="lyric-big" onclick="event.stopPropagation()"></div>
+  <div class="stick-hint">点击歌词外区域退出 · 歌词大屏呈现</div>
+</div>
+<div id="lyr-view-overlay" class="tool-overlay lyr-view-overlay" onclick="closeLyricView()">
+  <div class="lyr-view-inner" onclick="event.stopPropagation()">
+    <div class="lyr-view-title"></div>
+    <pre class="lyr-view-body"></pre>
+    <div class="stick-hint">点击屏幕任意位置退出 · 离线也能查看收藏的歌词</div>
+  </div>
+</div>
+
+<!-- 通用弹窗 -->
+<div id="modal-mask" class="modal-mask" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div id="modal-body"></div>
+    <button class="btn btn-primary btn-block" onclick="closeModal()">我知道了，理性消费 💜</button>
+  </div>
+</div>
+
+<!-- 通用功能弹窗（打赏 / 反馈 / 设置 / 图片查看） -->
+<div id="gen-modal" class="modal-mask" onclick="if(event.target===this)closeGenModal()">
+  <div class="modal-box gen-box">
+    <div id="gen-body"></div>
+    <div id="gen-foot" class="btn-row" style="margin-top:14px;justify-content:flex-end"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
